@@ -40,6 +40,17 @@ class EntradasController extends Controller
         $contenido = $request->input('contenido');
 
 
+        $entradaDuplicada = Entradas::where("titulo",$titulo)->first();
+
+        if($entradaDuplicada){
+
+            $data= [
+                "message" => "error al crear el registro titulo duplicado ",
+                "status" => 400
+            ];
+            return response()->json($data, 200);
+        }
+
         $entradas = Entradas::create([
             "titulo" => $titulo,
             "autor" => $autor,

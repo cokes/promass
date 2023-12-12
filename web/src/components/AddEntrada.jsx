@@ -27,6 +27,8 @@ export const AddEntrada = () => {
             if (json.status === 200){
                 alert("guardado correctamente");
                 reset();
+            } else {
+                alert("error al crear registre probable duplicación, cambia el titulo")
             }
         } catch (error) {
 
